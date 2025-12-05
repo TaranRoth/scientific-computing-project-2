@@ -27,17 +27,7 @@ hold off
 function result = f(t,y,p)
     h = y(1); l = y(2);
     a = p(1); b = p(2); c = p(3); d = p(4); l_0 = p(5);e=p(6);
-    l_adj = lynx_term_adjust(l,l_0);
-    %result = [a*h - b*h*l; -c*l + d*h*l];
-    %result = [h*(a-b*(l^e/l^(e-1)+l_0)); -c*l + d*h*l];
-    result = [a*h - b*h*l_adj; -c*l + d*h*l];
-end
-
-function y=lynx_term_adjust(l, l_0)
-    y=l;
-    if l <= l_0
-        y=0;
-    end
+    result = [h*(a-b*(l^e/l^(e-1)+l_0)); -c*l + d*h*l];
 end
 
 function y=cost(v, t0, tf, data)
